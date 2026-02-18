@@ -1,57 +1,158 @@
 :root {
-    --bg-color: #0a0a0a;
-    --text-color: #e0e0e0;
-    --accent-color: #00ff41; /* Matrix Green atau ganti ke #007bff untuk Blue */
-    --border-color: #333;
+    --gold: #c5a059;
+    --text: #ffffff;
+    --bg-dark: #050505;
+    --secondary-text: #888888;
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+body, html {
     margin: 0;
-    overflow: hidden;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
-.terminal {
-    width: 80%;
-    max-width: 800px;
-    height: 500px;
-    background: #111;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+/* --- BACKGROUND & KNIGHT --- */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.knight-bg {
+    width: 100%;
+    height: 100%;
+    /* Ganti URL ini dengan foto ksatria pilihanmu */
+    background: url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?q=80&w=2000') center/cover no-repeat;
+    filter: brightness(0.25) contrast(1.1) saturate(0.8);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, var(--bg-dark));
+}
+
+.leaf-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.leaf {
+    position: absolute;
+    background: #8b4513;
+    width: 8px;
+    height: 12px;
+    border-radius: 2px 10px;
+    opacity: 0.4;
+}
+
+/* --- SECTIONS --- */
+.section {
+    min-height: 140vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.terminal-header {
-    background: #1a1a1a;
-    padding: 10px;
+/* --- REVEAL ANIMATION STATES --- */
+.reveal-item {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translateY(60px) scale(0.95);
+}
+
+/* --- LANDING --- */
+.landing h1 {
+    font-size: clamp(2rem, 10vw, 6rem);
+    letter-spacing: 25px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.landing p {
+    color: var(--secondary-text);
+    letter-spacing: 8px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* --- ABOUT ME --- */
+.about-content {
     display: flex;
-    gap: 8px;
-    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+    gap: 80px;
+    max-width: 1200px;
+    width: 100%;
 }
 
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-.title { margin: 0 auto; font-size: 12px; color: #666; }
-
-.terminal-window {
+.photo-frame {
+    flex-shrink: 0;
+    border: 1px solid rgba(197, 160, 89, 0.2);
     padding: 20px;
-    overflow-y: auto;
-    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.01);
 }
 
-.prompt { color: var(--accent-color); font-weight: bold; margin-right: 10px; }
-#cursor { animation: blink 1s infinite; }
+.photo-frame img {
+    width: 380px;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.5);
+}
 
-@keyframes blink { 50% { opacity: 0; } }
-.line { margin-bottom: 10px; line-height: 1.5; }
-.highlight { color: var(--accent-color); }
+.text-box h2 {
+    font-size: 4rem;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.text-box p {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #aaa;
+    max-width: 550px;
+}
+
+/* --- SKILLS & EXPERIENCE --- */
+.centered-content {
+    text-align: center;
+}
+
+.title-gold {
+    color: var(--gold);
+    letter-spacing: 10px;
+    font-size: 1rem;
+    margin-bottom: 40px;
+    display: block;
+}
+
+.skill-list span {
+    display: block;
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-weight: 300;
+    margin: 15px 0;
+    letter-spacing: -1px;
+}
+
+.exp-item h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
