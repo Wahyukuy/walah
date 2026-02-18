@@ -3,26 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Shadow Architect | Portfolio</title>
+    <title>The Lone Knight | Personal Branding</title>
+    
     <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="overlay"></div>
-    <main class="terminal">
-        <header class="terminal-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <p class="title">root@demon-king:~</p>
-        </header>
-        <section class="terminal-window" id="terminal-window">
-            <div id="output"></div>
-            <div class="input-line">
-                <span class="prompt">>></span>
-                <span id="cursor">█</span>
+
+    <div class="background-container">
+        <div class="knight-bg"></div>
+        <div class="overlay"></div>
+        <div class="leaf-container" id="leaf-factory"></div>
+    </div>
+
+    <section class="section landing">
+        <h1 class="reveal-item">Architect</h1>
+        <p class="reveal-item">SCROLL TO ASCEND</p>
+    </section>
+
+    <section class="section about">
+        <div class="about-content">
+            <div class="photo-frame reveal-item">
+                <img src="https://via.placeholder.com/380x520" alt="Your Portrait">
             </div>
-        </section>
-    </main>
+            <div class="text-box">
+                <h2 class="reveal-item">About Me</h2>
+                <p class="reveal-item">Seorang ksatria digital yang menempa solusi di tengah sunyi. Bagi saya, kode bukan sekadar baris instruksi, melainkan seni presisi tanpa kompromi.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section skills">
+        <div class="centered-content">
+            <span class="title-gold reveal-item">ARSENAL</span>
+            <div class="skill-list">
+                <span class="reveal-item">Advanced Backend Systems</span>
+                <span class="reveal-item">Full-Stack Domination</span>
+                <span class="reveal-item">Cloud Infrastructure</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section experience">
+        <div class="centered-content">
+            <span class="title-gold reveal-item">HISTORY</span>
+            <div class="exp-item reveal-item">
+                <h3>Lead Developer</h3>
+                <p>Eclipsing the boundaries of tech since 2020.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
