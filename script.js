@@ -1,41 +1,56 @@
-const output = document.getElementById('output');
-const messages = [
-    "> Initializing Demon King Protocol...",
-    "> Accessing hidden repositories...",
-    "> Status: <span class='highlight'>Online</span>",
-    "> User: <span class='highlight'>YourName</span>",
-    "> Speciality: Fullstack Domination & System Architecture",
-    "> 'I don't write code, I dictate reality.'",
-    "> Type 'help' to see my powers..."
-];
+gsap.registerPlugin(ScrollTrigger);
 
-let i = 0;
+// 1. LEAF GENERATOR
+const leafFactory = document.getElementById('leaf-factory');
 
-function typeWriter(text, index, cb) {
-    if (index < text.length) {
-        const char = text.charAt(index);
-        const lastLine = output.lastElementChild;
-        lastLine.innerHTML += char;
-        setTimeout(() => typeWriter(text, index + 1, cb), 30);
-    } else {
-        cb();
-    }
+function createLeaf() {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.style.left = Math.random() * 100 + 'vw';
+    leafFactory.appendChild(leaf);
+
+    gsap.to(leaf, {
+        y: '110vh',
+        x: '+=200',
+        rotation: Math.random() * 1000,
+        duration: 10 + Math.random() * 5,
+        ease: "none",
+        onComplete: () => leaf.remove()
+    });
 }
 
-function addNewLine() {
-    const div = document.createElement('div');
-    div.className = 'line';
-    output.appendChild(div);
-}
+// Jalankan efek daun setiap 500ms
+setInterval(createLeaf, 500);
 
-function startBoot() {
-    if (i < messages.length) {
-        addNewLine();
-        typeWriter(messages[i], 0, () => {
-            i++;
-            setTimeout(startBoot, 500);
-        });
-    }
-}
+// 2. SMOOTH REVEAL ENGINE
+const sections = document.querySelectorAll('.section');
 
-window.onload = startBoot;
+sections.forEach((section) => {
+    const items = section.querySelectorAll('.reveal-item');
+    
+    gsap.to(items, {
+        scrollTrigger: {
+            trigger: section,
+            start: "top 75%",
+            end: "top 15%",
+            toggleActions: "play reverse play reverse",
+            scrub: 1.5 // Ini yang bikin pergerakan mengikuti scroll dengan mulus
+        },
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+        scale: 1,
+        stagger: 0.3,
+        duration: 2,
+        ease: "power4.out"
+    });
+});
+
+// Parallax effect on Knight Background
+gsap.to(".knight-bg", {
+    scrollTrigger: {
+        scrub: true
+    },
+    y: 200,
+    scale: 1.1
+});
